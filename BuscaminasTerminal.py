@@ -1,6 +1,6 @@
 import random
 import sys
-import casillaTerminal
+import CasillaTerminal as casillaTerminal
 
 def inicio() -> list:
 #Iniciar las dimensiones y minas
@@ -54,8 +54,15 @@ def pedirPosición(filas, columnas) -> list:
 
 def imprimirMatriz(filas, columnas, matriz):
     #Imprime la matriz
+    print("\t\t\t ",end="")
+    for i in range(columnas):
+    	if i+1 < 10:
+    		print(str(i+1) + "   ",end="")
+    	else:
+    		print(str(i+1) + "  ",end="")
+    print("")
     for i in range(filas):
-        print("\t\t",end="")
+        print("\t\t"+ str(i+1) + "\t",end="")
         for j in range(columnas):
             matriz[i][j].print()
         print("")
@@ -126,8 +133,6 @@ def main() -> int:
         imprimirMatriz(filas, columnas, matriz)
         pos = pedirPosición(filas, columnas)
         (val,fin) = mostrarCasilla(filas, columnas, matriz, pos, val)
-        print(val)
-        print(fin)
     imprimirMatriz(filas, columnas, matriz)
     input()
     return 0
